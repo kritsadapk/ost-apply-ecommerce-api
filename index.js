@@ -35,8 +35,9 @@ app.get("/products", function (req, res) {
 
 app.get("/me", function (req, res) {
   fs.readFile(__dirname + "/" + jsonFileName, "utf8", function (err, data) {
-    var me = JSON.parse(data).me;
-    return res.json(me[0]).status(200);
+    var db = new JsonDB(new Config(jsonFileName, true, false, "/"));
+    var me = db.getData("/userLogin");
+    return res.json(me).status(200);
   });
 });
 
