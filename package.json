@@ -1,17 +1,19 @@
 {
   "name": "ecommerce-test",
   "version": "1.0.0",
-  "description": "",
-  "main": "pmhi.js",
+  "description": "This ecommerce api is so cool",
+  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "author": "",
+  "author": "krit",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
     "express": "^4.17.3",
     "node-json-db": "^1.5.0"
+  },
+  "engines": {
+    "node": "14.17.0"
   }
 }
