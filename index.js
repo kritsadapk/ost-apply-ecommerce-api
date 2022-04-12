@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const jsonFileName = "list.json";
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-var server = app.listen(3000, function () {
+var server = app.listen(process.env.PORT || 3000, function () {
   const host = server.address().address;
   const port = server.address().port;
 
