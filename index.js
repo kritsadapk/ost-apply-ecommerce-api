@@ -43,9 +43,9 @@ app.get("/me", function (req, res) {
 app.put("/me", urlencodedParser, function (req, res) {
   var db = new JsonDB(new Config(jsonFileName, true, false, "/"));
 
-  var clone = db.getData("/me");
+  var clone = db.getData("/userLogin");
   db.push(
-    "/me",
+    "/userLogin",
     Object.assign(clone, {
       fistName: req.body.fistName,
       lastName: req.body.lastName,
