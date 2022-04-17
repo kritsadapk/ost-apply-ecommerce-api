@@ -9,14 +9,17 @@ const cors = require("cors");
 const jsonFileName = "list.json";
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+app.use(cors());
+app.use(express.json());
+
 var server = app.listen(process.env.PORT || 3000, function () {
   const host = server.address().address;
   const port = server.address().port;
 
   console.log("Example app listening at http://%s:%s", host, port);
 });
-app.use(express.json());
-console.log(__dirname + "/" + jsonFileName);
+
+// console.log(__dirname + "/" + jsonFileName);
 app.get("/products", function (req, res) {
   fs.readFile(__dirname + "/" + jsonFileName, "utf8", function (err, data) {
     var pd = JSON.parse(data).products;
@@ -72,8 +75,7 @@ app.get("/products/:id", function (req, res) {
   });
 });
 
-app.use(cors());
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.get("/index.html", function (req, res) {
   res.sendFile(__dirname + "/" + "index.html");
 });
