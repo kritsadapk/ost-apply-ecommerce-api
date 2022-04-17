@@ -4,6 +4,7 @@ const fs = require("fs");
 const JsonDB = require("node-json-db").JsonDB;
 const Config = require("node-json-db/dist/lib/JsonDBConfig").Config;
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const jsonFileName = "list.json";
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -71,6 +72,7 @@ app.get("/products/:id", function (req, res) {
   });
 });
 
+app.use(cors());
 app.use(express.static("public"));
 app.get("/index.html", function (req, res) {
   res.sendFile(__dirname + "/" + "index.html");
