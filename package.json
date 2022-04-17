@@ -4,7 +4,7 @@
   "description": "This ecommerce api is so cool",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "author": "krit",
   "license": "ISC",

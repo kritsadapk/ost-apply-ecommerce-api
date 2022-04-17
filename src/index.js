@@ -16,7 +16,7 @@ var server = app.listen(process.env.PORT || 3000, function () {
   console.log("Example app listening at http://%s:%s", host, port);
 });
 app.use(express.json());
-
+console.log(__dirname + "/" + jsonFileName);
 app.get("/products", function (req, res) {
   fs.readFile(__dirname + "/" + jsonFileName, "utf8", function (err, data) {
     var pd = JSON.parse(data).products;
