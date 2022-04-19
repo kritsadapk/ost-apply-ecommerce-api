@@ -31,6 +31,7 @@ app.get("/products", function (req, res) {
         name: pd[i].name,
         imageUrl: pd[i].imageUrl,
         price: pd[i].price,
+        stock: pd[i].stock,
       });
     }
     return res.json(arr).status(200);
@@ -48,16 +49,16 @@ app.get("/me", function (req, res) {
 app.put("/me", urlencodedParser, function (req, res) {
   var db = new JsonDB(new Config(jsonFileName, true, false, "/"));
 
-  var clone = db.getData("/userLogin");
+  var cloneUserLogin = db.getData("/userLogin");
   db.push(
     "/userLogin",
-    Object.assign(clone, {
+    Object.assign(cloneUserLogin, {
       fistName: req.body.fistName,
       lastName: req.body.lastName,
     })
   );
-  var again = db.getData("/me");
-  return res.json(again).status(200);
+  const userLogin = db.getData("/userLogin");
+  return res.json(userLogin).status(200);
 });
 
 app.get("/products/:id", function (req, res) {
